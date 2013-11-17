@@ -2,85 +2,88 @@
 
 # L-Bia name and version
 LB_NAME=l-bia
-LB_VERSION=0.3.2
+LB_VERSION=0.3.3
+LB_VERNAME=$(LB_NAME)-$(LB_VERSION)
 
-all: release docs
+.PHONY: all docs htdocs clean erase purge distclean pkg-all pkg-src \
+	pkg-htdocs pkg-win32 pkg-win64 pkg-linux32 pkg-linux64 pkg-linux-armhf
 
-release:
-	@$(MAKE) -sC src release
+all:
+	@$(MAKE) -C src
 
 docs:
-	@$(MAKE) -sC doc
+	@$(MAKE) -C doc
+
+htdocs:
+	@$(MAKE) -s doc/htdocs
 
 clean:
-	@$(MAKE) -sC src clean
-	@$(MAKE) -sC doc clean
-	@$(MAKE) -sC doc/htdocs clean
-	
+	@$(MAKE) -C src clean
+	@$(MAKE) -C doc clean
+	@$(MAKE) -C doc/htdocs clean
+	@$(RM) *.tar.bz2
+
 erase:
-	@$(MAKE) -sC src erase
-	@$(MAKE) -sC doc erase
-	@$(MAKE) -sC doc/htdocs erase
+	@$(MAKE) -C src erase
+	@$(MAKE) -C doc erase
+	@$(MAKE) -C doc/htdocs erase
+	$(RM) *.tar.bz2
+
+purge:
+	@$(MAKE) -C src purge
+	$(RM) *.tar.bz2
+
+distclean:
+	@$(MAKE) -C src purge
+	$(RM) *.tar.bz2
 
 # packages
 
-LB_SFILES=HISTORY  LICENSE  Makefile  README  doc  src
-LB_HFILES=index.html license.html history.html lbstyle.css lblogo.png \
-          luapowered-white.png gnubanner-2.png t2tpowered-white.png
-LB_BFILES=doc/lbdoc.pdf src/l-bia.lua
+pkg-all: pkg-src pkg-htdocs pkg-win32 pkg-win64 pkg-linux32 pkg-linux64
 
-pkg-all: pkg-src pkg-htdocs pkg-w32 pkg-w64 pkg-linux32 pkg-linux64
+pkg-src: $(LB_VERNAME).tar.bz2
+$(LB_VERNAME).tar.bz2:
+	@echo Building $@ package...
+	@tar --transform 's#\.#$(LB_VERNAME)#' --exclude=.git \
+	--exclude=.gitignore --exclude-from=.gitignore -cf $@ .
 
-LB_SRC=$(LB_NAME)-$(LB_VERSION)
-pkg-src: erase
-	@echo Building $(LB_SRC).tar.bz2 package...
-	@mkdir $(LB_SRC)
-	@cp -r $(LB_SFILES) $(LB_SRC)
-	@tar cjf ../$(LB_SRC).tar.bz2 $(LB_SRC) --exclude=*.so --exclude=*.dll
-	@rm -rf $(LB_SRC)
+pkg-htdocs: htdocs $(LB_VERNAME)-htdocs.tar.bz2
+$(LB_VERNAME)-htdocs.tar.bz2:
+	@echo Building $@ package...
+	@tar --transform 's#\.#$(LB_VERNAME)#' --exclude=doc/htdocs/*.t2t \
+	--exclude=doc/htdocs/lbtopbar.html -cf $@ ./doc/htdocs
 
-LB_HTDOCS=$(LB_NAME)-$(LB_VERSION)-htdocs
-pkg-htdocs:
-	@echo Building $(LB_HTDOCS).zip package...
-	@mkdir $(LB_HTDOCS)
-	@cd doc/htdocs && $(MAKE) -s && cp $(LB_HFILES) ../../$(LB_HTDOCS)
-	@zip -q -9 -r ../$(LB_HTDOCS).zip $(LB_HTDOCS)
-	@rm -rf $(LB_HTDOCS)
+pkg-win32: docs $(LB_VERNAME)-win32.tar.bz2
+$(LB_VERNAME)-win32.tar.bz2:
+	@$(MAKE) -C src win32
+	@echo Building $@ package...
+	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cf $@ \
+	doc/lbdoc.pdf src/l-bia.lua src/win32/l-bia.exe
 
-LB_W32=$(LB_NAME)-$(LB_VERSION)-w32
-pkg-w32: release docs
-	@echo Building $(LB_W32).zip package...
-	@mkdir $(LB_W32)
-	@cp -r $(LB_BFILES) $(LB_W32)
-	@cp src/l-bia-w32.exe $(LB_W32)/l-bia.exe
-	@zip -q -9 -r ../$(LB_W32).zip $(LB_W32)
-	@rm -rf $(LB_W32)
+pkg-win64: docs $(LB_VERNAME)-win64.tar.bz2
+$(LB_VERNAME)-win64.tar.bz2:
+	@$(MAKE) -C src win64
+	@echo Building $@ package...
+	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cf $@ \
+	doc/lbdoc.pdf src/l-bia.lua src/win64/l-bia.exe
 
-LB_W64=$(LB_NAME)-$(LB_VERSION)-w64
-pkg-w64: release docs
-	@echo Building $(LB_W64).zip package...
-	@mkdir $(LB_W64)
-	@cp -r $(LB_BFILES) $(LB_W64)
-	@cp src/l-bia-w64.exe $(LB_W64)/l-bia.exe
-	@zip -q -9 -r ../$(LB_W64).zip $(LB_W64)
-	@rm -rf $(LB_W64)
+pkg-linux32: docs $(LB_VERNAME)-linux32.tar.bz2
+$(LB_VERNAME)-linux32.tar.bz2:
+	@$(MAKE) -C src linux32
+	@echo Building $@ package...
+	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cf $@ \
+	doc/lbdoc.pdf src/l-bia.lua src/linux32/l-bia
 
-LB_LINUX32=$(LB_NAME)-$(LB_VERSION)-linux32
-pkg-linux32: release docs
-	@echo Building $(LB_LINUX32).tar.bz2 package...
-	@mkdir $(LB_LINUX32)
-	@cp -r $(LB_BFILES) $(LB_LINUX32)
-	@cp src/l-bia-linux32 $(LB_LINUX32)/l-bia
-	@tar cjf ../$(LB_LINUX32).tar.bz2 $(LB_LINUX32)
-	@rm -rf $(LB_LINUX32)
+pkg-linux64: docs $(LB_VERNAME)-linux64.tar.bz2
+$(LB_VERNAME)-linux64.tar.bz2:
+	@$(MAKE) -C src linux64
+	@echo Building $@ package...
+	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cf $@ \
+	doc/lbdoc.pdf src/l-bia.lua src/linux64/l-bia
 
-LB_LINUX64=$(LB_NAME)-$(LB_VERSION)-linux64
-pkg-linux64: release docs
-	@echo Building $(LB_LINUX64).tar.bz2 package...
-	@mkdir $(LB_LINUX64)
-	@cp -r $(LB_BFILES) $(LB_LINUX64)
-	@cp src/l-bia-linux64 $(LB_LINUX64)/l-bia
-	@tar cjf ../$(LB_LINUX64).tar.bz2 $(LB_LINUX64)
-	@rm -rf $(LB_LINUX64)
-
-.PHONY: all release docs clean erase pkg-all pkg-src pkg-htdocs pkg-w32 pkg-w64 pkg-linux32 pkg-linux64
+pkg-linux-armhf: docs $(LB_VERNAME)-linux-armhf.tar.bz2
+$(LB_VERNAME)-linux-armhf.tar.bz2:
+	@$(MAKE) -C src linux-armhf
+	@echo Building $@ package...
+	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cf $@ \
+	doc/lbdoc.pdf src/l-bia.lua src/linux-armhf/l-bia
