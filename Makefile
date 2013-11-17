@@ -45,45 +45,45 @@ pkg-src: $(LB_VERNAME).tar.bz2
 $(LB_VERNAME).tar.bz2:
 	@echo Building $@ package...
 	@tar --transform 's#\.#$(LB_VERNAME)#' --exclude=.git \
-	--exclude=.gitignore --exclude-from=.gitignore -cf $@ .
+	--exclude=.gitignore --exclude-from=.gitignore -cjf $@ .
 
 pkg-htdocs: htdocs $(LB_VERNAME)-htdocs.tar.bz2
 $(LB_VERNAME)-htdocs.tar.bz2:
 	@echo Building $@ package...
 	@tar --transform 's#\.#$(LB_VERNAME)#' --exclude=doc/htdocs/*.t2t \
-	--exclude=doc/htdocs/lbtopbar.html -cf $@ ./doc/htdocs
+	--exclude=doc/htdocs/lbtopbar.html -cjf $@ ./doc/htdocs
 
 pkg-win32: docs $(LB_VERNAME)-win32.tar.bz2
 $(LB_VERNAME)-win32.tar.bz2:
 	@$(MAKE) -C src win32
 	@echo Building $@ package...
-	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cf $@ \
+	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cjf $@ \
 	doc/lbdoc.pdf src/l-bia.lua src/win32/l-bia.exe src/win32/lua*.dll
 
 pkg-win64: docs $(LB_VERNAME)-win64.tar.bz2
 $(LB_VERNAME)-win64.tar.bz2:
 	@$(MAKE) -C src win64
 	@echo Building $@ package...
-	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cf $@ \
+	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cjf $@ \
 	doc/lbdoc.pdf src/l-bia.lua src/win64/l-bia.exe src/win64/lua*.dll
 
 pkg-linux32: docs $(LB_VERNAME)-linux32.tar.bz2
 $(LB_VERNAME)-linux32.tar.bz2:
 	@$(MAKE) -C src linux32
 	@echo Building $@ package...
-	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cf $@ \
+	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cjf $@ \
 	doc/lbdoc.pdf src/l-bia.lua src/linux32/l-bia src/linux32/liblua*.so
 
 pkg-linux64: docs $(LB_VERNAME)-linux64.tar.bz2
 $(LB_VERNAME)-linux64.tar.bz2:
 	@$(MAKE) -C src linux64
 	@echo Building $@ package...
-	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cf $@ \
+	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cjf $@ \
 	doc/lbdoc.pdf src/l-bia.lua src/linux64/l-bia src/linux64/liblua*.so
 
 pkg-linux-armhf: docs $(LB_VERNAME)-linux-armhf.tar.bz2
 $(LB_VERNAME)-linux-armhf.tar.bz2:
 	@$(MAKE) -C src linux-armhf
 	@echo Building $@ package...
-	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cf $@ \
+	@tar --transform 's#.*/#$(LB_VERNAME)/#' -cjf $@ \
 	doc/lbdoc.pdf src/l-bia.lua src/linux-armhf/l-bia src/linux-armhf/liblua*.so
