@@ -1,4 +1,11 @@
 
+== Changes from version 0.3.2 to 0.3.3 2013-11-17 ==
+: Implementation:
+  - Makefiles give you (me) better support for cross compiling (except armhf).
+  - Makefiles now download and compile Lua shared library for you.
+  - New directory structure, new icon and windows xp styles, bug fixes.
+
+
 == Changes from version 0.3.1 to 0.3.2 2013-11-14 ==
 : Implementation:
   - Project is resurrected and rewritten in Pascal. Yet still only runs a
