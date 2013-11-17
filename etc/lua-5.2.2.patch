@@ -1,0 +1,23 @@
+diff -Nur lua-5.2.2.orig/src/luaconf.h lua-5.2.2/src/luaconf.h
+--- lua-5.2.2.orig/src/luaconf.h	2013-05-01 11:04:34.515757473 -0400
++++ lua-5.2.2/src/luaconf.h	2013-05-01 11:08:33.407767430 -0400
+@@ -95,7 +95,8 @@
+ 		LUA_LDIR"?.lua;"  LUA_LDIR"?\\init.lua;" \
+ 		LUA_CDIR"?.lua;"  LUA_CDIR"?\\init.lua;" ".\\?.lua"
+ #define LUA_CPATH_DEFAULT \
+-		LUA_CDIR"?.dll;" LUA_CDIR"loadall.dll;" ".\\?.dll"
++		LUA_CDIR"?.dll;" LUA_CDIR"loadall.dll;" ".\\?.dll" \
++    LUA_CDIR"?52.dll;" ".\\?52.dll"
+ 
+ #else			/* }{ */
+ 
+@@ -107,7 +108,8 @@
+ 		LUA_LDIR"?.lua;"  LUA_LDIR"?/init.lua;" \
+ 		LUA_CDIR"?.lua;"  LUA_CDIR"?/init.lua;" "./?.lua"
+ #define LUA_CPATH_DEFAULT \
+-		LUA_CDIR"?.so;" LUA_CDIR"loadall.so;" "./?.so"
++		LUA_CDIR"?.so;" LUA_CDIR"loadall.so;" "./?.so" \
++    LUA_CDIR"lib?52.so;" "./lib?52.so"
+ #endif			/* } */
+ 
+ 
