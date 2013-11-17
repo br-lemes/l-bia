@@ -99,7 +99,7 @@ end;
 
 procedure lb_error(const msg: string); inline;
 begin
-	writeln(erroutput, lb_prgname + ': ' + msg);
+	writeln(stderr, lb_prgname + ': ' + msg);
 	halt(1);
 end;
 
@@ -119,7 +119,11 @@ var
 	end;
 begin
 	lb_handler := loadlibrary(libname);
+	{$IF FPC_FULLVERSION >= 20602}
 	if lb_handler = 0 then lb_error(getloaderrorstr);
+	{$ELSE}
+	if lb_handler = 0 then lb_error('cannot load ' + libname);
+	{$ENDIF}
 	luaL_newstate   := lb_getprocaddress(lb_handler, 'luaL_newstate');
 	luaL_openlibs   := lb_getprocaddress(lb_handler, 'luaL_openlibs');
 	lua_createtable := lb_getprocaddress(lb_handler, 'lua_createtable');
