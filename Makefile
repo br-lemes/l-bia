@@ -15,7 +15,7 @@ docs:
 	@$(MAKE) -C doc
 
 htdocs:
-	@$(MAKE) -s doc/htdocs
+	@$(MAKE) -C doc/htdocs
 
 clean:
 	@$(MAKE) -C src clean
