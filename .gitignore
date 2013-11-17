@@ -1,0 +1,11 @@
+doc/htdocs/history.html
+doc/htdocs/index.html
+doc/htdocs/license.html
+doc/lbdoc.lout
+doc/lbdoc.lout.ld
+doc/lbdoc.pdf
+doc/lout.li
+src/linux*
+src/lua-*
+src/win*
+l-bia-*
