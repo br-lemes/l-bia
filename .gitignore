@@ -9,3 +9,4 @@ src/linux*
 src/lua-*
 src/win*
 l-bia-*
+*.tar
