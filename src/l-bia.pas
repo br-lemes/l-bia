@@ -14,13 +14,18 @@
 
 {$mode delphi}
 
+{$IFDEF WINDOWS}
+	{$apptype gui}
+	{$R ../etc/l-bia.rc}
+{$ENDIF}
+
 uses lbaux;
 
 const
 	{$IFDEF WINDOWS}
-	lb_liblua = 'lua52.dll';
+	lb_liblua = 'lua5.1.dll';
 	{$ELSE}
-	lb_liblua = 'liblua52.so';
+	lb_liblua = 'liblua5.1.so';
 	{$ENDIF}
 
 {$IFDEF UNIX}
