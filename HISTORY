@@ -1,0 +1,132 @@
+
+== Changes from version 0.3.1 to 0.3.2 2013-11-14 ==
+: Implementation:
+  - Project is resurrected and rewritten in Pascal. Yet still only runs a
+    script with the same name as the executable.
+  - Lua library is dynamically loaded runtime, either version 5.1 or 5.2
+    but which one is hard coded at compile time (it's a pre-support for future
+    version).
+
+
+== Changes from version 0.3.0 to 0.3.1 2010-07-27 ==
+: Documentation:
+  - New project host: SourceForge.net - fixed references and links.
+
+
+== Changes from version 0.2.2 to 0.3.0 2010-04-12 ==
+: Implementation:
+  - rewritten from strach, now only same name running.
+
+
+== Changes from version 0.2.1 to 0.2.2 (**never released**) ==
+: Documentation:
+  - bug fixes.
+  - new manual.
+
+: Implementation:
+  - bug fixes.
+  - fully dynamic version (lua library unpacked and loaded at run-time).
+
+
+== Changes from version 0.1.10 to 0.2.1 2008-08-08 ==
+: Documentation:
+  - updated (but need more, more and more updates).
+
+: Implementation:
+  - bug fixes.
+  - new linking method.
+  - new file format with checksum.
+  - new features and code revision in l-bia.c
+  - new functions and code revision in lbaux.c
+  - new features, functions and code revision in l-bia.lua
+  - added, removed and renamed some options in l-bia.lua
+
+
+== Changes from version 0.1.9 to 0.1.10 2008-06-26 ==
+: Documentation:
+  - new directory structure.
+  - new pdf version.
+  - rewritten some paragraphs to have a clearer text (still needing more).
+
+: Implementation:
+  - new directory structure.
+  - cleaned file headers.
+  - replaced malloc by alloca in l-bia.c and lbaux.c.
+  - replaced chmod by fchmod in lbaux.c.
+  - removed unused ntobyte and ntochar functions from lbaux.c.
+  - removed the options -xb and -xs from l-bia.lua because they became
+    obsolete and confusing.
+  - new testing script.
+  - fixed some hidden bugs (linux testing exposed then).
+  - fixes and improvement in makefiles.
+
+
+== Changes from version 0.1.8 to 0.1.9 2008-05-19 ==
+: Implementation:
+  - fixed ID check bug in l-bia.c and l-bia.lua.
+
+
+== Changes from version 0.1.7 to 0.1.8 2008-05-15 ==
+: Implementation:
+  - updated to miniLZO 2.03.
+  - fixed another small bug in the module loading.
+  - small fix in the win32 packing target in Makefile.
+
+
+== Changes from version 0.1.6 to 0.1.7 2008-05-12 ==
+: Implementation:
+  - fixed a small bug in the module loading.
+
+
+== Changes from version 0.1.5 to 0.1.6 2008-02-22 ==
+
+: Implementation:
+  - fixed some bugs and miskates.
+  - new module built feature.
+
+
+== Changes from version 0.1.4 to 0.1.5 2008-02-15 ==
+: Implementation:
+  - new -v or --version option.
+  - new -h synonym for --help.
+
+
+== Changes from version 0.1.3 to 0.1.4 2008-02-15 ==
+: Documentation:
+  - fixed some miskates.
+
+: Implementation:
+  - updated to Lua 5.1.3.
+  - new quote function in lbaux package.
+  - fixed some bugs.
+
+
+== Changes from version 0.1.2 to 0.1.3 2008-01-30 ==
+: Documentation:
+  - fixed some links and mistakes.
+  - added e-mail address.
+
+: Implementation:
+  - new lstrip mode.
+  - new stdout and stderr messages.
+  - new lbaux.dll or lbaux.so from lbaux.c.
+  - better options handling.
+  - fixed version number in l-bia.lua.
+  - LZO in l-bia.c do not use lbaux.c.
+  - win32 and src packing target in Makefile.
+
+
+== Changes from version 0.1.1 to 0.1.2 2008-01-25 ==
+: Documentation:
+  - new L-Bia logo.
+  - new HISTORY document.
+  - some small updates here and there.
+
+: Implementation:
+  - new lbaux.c which contains all registered functions
+    (chmod, compress and decompress).
+  - updates in l-bia.lua to reflect the new lbaux.c.
+  - renamed lbiaconf.h to lbconf.h.
+  - renamed all LBIA* and lbia* names to LB* and lb*.
+
+== Initial release version 0.1.1 2008-01-23 ==

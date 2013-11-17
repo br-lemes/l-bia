@@ -1,0 +1,90 @@
+
+== News ==
+
+: 2013-11-14 Release 0.3.2:
+  - Project is resurrected and rewritten in Pascal. Yet still only runs a
+    script with the same name as the executable.
+  - Lua library is dynamically loaded runtime, either version 5.1 or 5.2
+    but which one is hard coded at compile time (it's a pre-support for future
+    version).
+
+: 2010-07-27 Release 0.3.1:
+  - New project host: SourceForge.net
+
+
+== Introduction ==
+
+=== What is it? ===
+
+Lua Built-In program (L-Bia) is a self-running Lua interpreter. It turns
+your Lua program with all required modules (either Lua or C libraries)
+and an interpreter into a single stand-alone executable program.
+
+**WARNING:** This version doesn't do that, it only run a lua script with
+the same name as the executable. I'm rewriting it due to many bugs in previous
+versions.
+
+=== Why should I use it? ===
+
+L-Bia makes the things simpler, because:
+
+- You don't need to distribute many files
+- You don't need to install or have any prior software indalled
+- Runs in any computer from any media (floppies, CD-ROMs, USB sticks or other)
+- Multi-platform, simple and easy to use
+
+
+Please note that L-Bia turns your program into an executable program. And an
+executable program for Windows doesn't run on Linux or other. You need to
+create an executable for each platform.
+
+So if your users are likely to always have the normal Lua interpreter installed,
+forget about L-Bia. But if your users are likely to not even heard about Lua,
+L-Bia is perfect for you.
+
+=== Do I have to pay for it? ===
+
+**Absolutely NO!** L-Bia is freely available under the terms of GNU General
+Public License. Contrary to popular belief, it can be used in comercial
+software! See #LICENSE for details. The latest version of L-Bia can be
+downloaded from its [SourceForge http://sourceforge.net/projects/l-bia/files/]
+page.
+
+=== Supported features ===
+
+- Run a lua script with the same name as the executable.
+
+
+== OK, I want it. Now what? ==
+
+=== Download ===
+
+The latest version of L-Bia can be downloaded from its
+[SourceForge http://sourceforge.net/projects/l-bia/files/] page.
+
+=== Build and Run ===
+
+You need the Free Pascal compiler. Just type ``fpc l-bia`` and you're done.
+But you need the appropriate Lua dynamic library.
+
+Now ``l-bia`` run ``l-bia.lua``, if you want to run ``hello.lua`` rename the
+executable to ``hello``. They must be in same directory and also any other
+files needed.
+
+== Thanks ==
+
+- **Waldemar Celes** and **Luiz Henrique de Figueiredo**, the autors
+  of Lua, for portions of code I used in L-Bia.
+- **Markus Franz Xaver Johannes Oberhumer** for miniLZO - mini subset of the
+  LZO real-time data compression library.
+- **Aurelio Marinho Jargas** for his ``txt2tags`` text formatting and
+  conversion tool used in these docs and things I plagiarized him
+  (plagiarism is my favorite buzzword :)
+- Many tanks also to **all those who sent me //feedback//**, I realy
+  appreciate it.
+
+
+== Feedback ==
+
+If you have any question, comment, bug report or other send to
+br_lemes@yahoo.com.br. I realy appreciate your //feedback//.

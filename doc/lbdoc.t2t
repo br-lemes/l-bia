@@ -1,0 +1,17 @@
+Lua Built-In program (L-Bia)
+Breno Ramalho Lemes
+%%mtime(%B %d, %Y) (version 0.3.2)
+
+%!includeconf: config
+
+= Lua Built-In program (L-Bia) =
+
+%!include:../README
+
+= License =
+
+%!include:../LICENSE
+
+= History =
+
+%!include:../HISTORY

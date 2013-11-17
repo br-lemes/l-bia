@@ -1,0 +1,8 @@
+L-Bia License
+Breno Ramalho Lemes
+November 14, 2013
+
+%!includeconf: ../config
+%!include(html): ''lbtopbar.html''
+
+%!include: ../../LICENSE
