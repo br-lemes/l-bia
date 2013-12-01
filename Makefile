@@ -45,7 +45,7 @@ pkg-src: $(LB_VERNAME).tar.bz2
 $(LB_VERNAME).tar.bz2:
 	@echo Building $@ package...
 	@tar --transform 's#\.#$(LB_VERNAME)#' --exclude=.git \
-	--exclude=.gitignore --exclude-from=.gitignore -cjf $@ .
+	--exclude=.gitignore --exclude=$@ --exclude-from=.gitignore -cjf $@ .
 
 pkg-htdocs: htdocs $(LB_VERNAME)-htdocs.tar.bz2
 $(LB_VERNAME)-htdocs.tar.bz2:
