@@ -1,12 +1,18 @@
 
-== Changes from version 0.3.2 to 0.3.3 2013-11-17 ==
+== News in 0.3.4 (compared to 0.3.3) 2013-12-01 ==
+: Implementation:
+  - Change current working directory to the executable directory.
+  - Try to load Lua 5.2 then Lua 5.1 (not hard coded anymore).
+
+
+== News in 0.3.3 (compared to 0.3.2) 2013-11-17 ==
 : Implementation:
   - Makefiles give you (me) better support for cross compiling (except armhf).
   - Makefiles now download and compile Lua shared library for you.
-  - New directory structure, new icon and windows xp styles, bug fixes.
+  - New directory structure, new icon, windows xp styles and bug fixes.
 
 
-== Changes from version 0.3.1 to 0.3.2 2013-11-14 ==
+== News in 0.3.2 (compared to 0.3.1) 2013-11-14 ==
 : Implementation:
   - Project is resurrected and rewritten in Pascal. Yet still only runs a
     script with the same name as the executable.
@@ -15,17 +21,17 @@
     version).
 
 
-== Changes from version 0.3.0 to 0.3.1 2010-07-27 ==
+== News in 0.3.1 (compared to 0.3.0) 2010-07-27 ==
 : Documentation:
   - New project host: SourceForge.net - fixed references and links.
 
 
-== Changes from version 0.2.2 to 0.3.0 2010-04-12 ==
+== News in 0.3.0 (compared to 0.2.2) 2010-04-12 ==
 : Implementation:
   - rewritten from strach, now only same name running.
 
 
-== Changes from version 0.2.1 to 0.2.2 (**never released**) ==
+== News in 0.2.2 (compared to 0.2.1) (**never released**) ==
 : Documentation:
   - bug fixes.
   - new manual.
@@ -49,7 +55,7 @@
   - added, removed and renamed some options in l-bia.lua
 
 
-== Changes from version 0.1.9 to 0.1.10 2008-06-26 ==
+== News in 0.1.1 (compared to 0.1.9)0 2008-06-26 ==
 : Documentation:
   - new directory structure.
   - new pdf version.
@@ -68,37 +74,37 @@
   - fixes and improvement in makefiles.
 
 
-== Changes from version 0.1.8 to 0.1.9 2008-05-19 ==
+== News in 0.1.9 (compared to 0.1.8) 2008-05-19 ==
 : Implementation:
   - fixed ID check bug in l-bia.c and l-bia.lua.
 
 
-== Changes from version 0.1.7 to 0.1.8 2008-05-15 ==
+== News in 0.1.8 (compared to 0.1.7) 2008-05-15 ==
 : Implementation:
   - updated to miniLZO 2.03.
   - fixed another small bug in the module loading.
   - small fix in the win32 packing target in Makefile.
 
 
-== Changes from version 0.1.6 to 0.1.7 2008-05-12 ==
+== News in 0.1.7 (compared to 0.1.6) 2008-05-12 ==
 : Implementation:
   - fixed a small bug in the module loading.
 
 
-== Changes from version 0.1.5 to 0.1.6 2008-02-22 ==
+== News in 0.1.6 (compared to 0.1.5) 2008-02-22 ==
 
 : Implementation:
   - fixed some bugs and miskates.
   - new module built feature.
 
 
-== Changes from version 0.1.4 to 0.1.5 2008-02-15 ==
+== News in 0.1.5 (compared to 0.1.4) 2008-02-15 ==
 : Implementation:
   - new -v or --version option.
   - new -h synonym for --help.
 
 
-== Changes from version 0.1.3 to 0.1.4 2008-02-15 ==
+== News in 0.1.4 (compared to 0.1.3) 2008-02-15 ==
 : Documentation:
   - fixed some miskates.
 
@@ -108,7 +114,7 @@
   - fixed some bugs.
 
 
-== Changes from version 0.1.2 to 0.1.3 2008-01-30 ==
+== News in 0.1.3 (compared to 0.1.2) 2008-01-30 ==
 : Documentation:
   - fixed some links and mistakes.
   - added e-mail address.
@@ -123,7 +129,7 @@
   - win32 and src packing target in Makefile.
 
 
-== Changes from version 0.1.1 to 0.1.2 2008-01-25 ==
+== News in 0.1.2 (compared to 0.1.1) 2008-01-25 ==
 : Documentation:
   - new L-Bia logo.
   - new HISTORY document.

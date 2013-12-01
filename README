@@ -1,17 +1,14 @@
 
 == News ==
 
-: Implementation:
+: 2013-12-01 Release 0.3.4:
+  - Change current working directory to the executable directory.
+  - Try to load Lua 5.2 then Lua 5.1 (not hard coded anymore).
+
+: 2013-11-17 Release 0.3.3:
   - Makefiles give you (me) better support for cross compiling (except armhf).
   - Makefiles now download and compile Lua shared library for you.
-  - New directory structure, new icon and windows xp styles, bug fixes.
-
-: 2013-11-14 Release 0.3.2:
-  - Project is resurrected and rewritten in Pascal. Yet still only runs a
-    script with the same name as the executable.
-  - Lua library is dynamically loaded runtime, either version 5.1 or 5.2
-    but which one is hard coded at compile time (it's a pre-support for future
-    version).
+  - New directory structure, new icon, windows xp styles and bug fixes.
 
 
 == Introduction ==
@@ -89,4 +86,4 @@ files needed.
 == Feedback ==
 
 If you have any question, comment, bug report or other send to
-br_lemes@yahoo.com.br. I realy appreciate your //feedback//.
+breno@br-lemes.net. I realy appreciate your //feedback//.
