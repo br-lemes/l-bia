@@ -8,8 +8,9 @@
  *  are welcome to redistribute it under certain conditions; see LICENSE
  *  for details.
  *
- *  Report bugs to <br_lemes@yahoo.com.br>
+ *  Report bugs to <breno@br-lemes.net>
  *  http://l-bia.sourceforge.net/
+ *  http://www.br-lemes.net/
  *}
 
 {$mode delphi}
@@ -43,7 +44,7 @@ function lua_tostring(L: lua_State; idx: integer): pchar; inline;
 function lb_prgname: string;
 function lb_prgpath: string;
 procedure lb_error(const msg: string); inline;
-procedure lb_loadlua(const libname: string);
+procedure lb_loadlua;
 
 implementation
 
@@ -108,7 +109,7 @@ begin
 	lua_setfield(L, LUA_GLOBALSINDEX, name);
 end;
 
-procedure lb_loadlua(const libname: string);
+procedure lb_loadlua;
 var
 	p: pointer;
 	function lb_getprocaddress(handler: thandle; const name: string; e: boolean = true): pointer;
@@ -118,11 +119,23 @@ var
 		result := p
 	end;
 begin
-	lb_handler := loadlibrary(libname);
+	{$IFDEF WINDOWS}
+	lb_handler := loadlibrary('./lua52.dll');
+	{$ELSE}
+	lb_handler := loadlibrary('./liblua52.so');
+	{$ENDIF}
+	if lb_handler = 0 then
+	begin
+		{$IFDEF WINDOWS}
+		lb_handler := loadlibrary('./lua5.1.dll');
+		{$ELSE}
+		lb_handler := loadlibrary('./liblua5.1.so');
+		{$ENDIF}
+	end;
 	{$IF FPC_FULLVERSION >= 20602}
 	if lb_handler = 0 then lb_error(getloaderrorstr);
 	{$ELSE}
-	if lb_handler = 0 then lb_error('cannot load ' + libname);
+	if lb_handler = 0 then lb_error('cannot load lua');
 	{$ENDIF}
 	luaL_newstate   := lb_getprocaddress(lb_handler, 'luaL_newstate');
 	luaL_openlibs   := lb_getprocaddress(lb_handler, 'luaL_openlibs');

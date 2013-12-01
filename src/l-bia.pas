@@ -8,8 +8,9 @@
  *  are welcome to redistribute it under certain conditions; see LICENSE
  *  for details.
  *
- *  Report bugs to <br_lemes@yahoo.com.br>
+ *  Report bugs to <breno@br-lemes.net>
  *  http://l-bia.sourceforge.net/
+ *  http://www.br-lemes.net/
  *}
 
 {$mode delphi}
@@ -20,13 +21,6 @@
 {$ENDIF}
 
 uses lbaux;
-
-const
-	{$IFDEF WINDOWS}
-	lb_liblua = 'lua5.1.dll';
-	{$ELSE}
-	lb_liblua = 'liblua5.1.so';
-	{$ENDIF}
 
 {$IFDEF UNIX}
 function execv(const path: pchar; const argv: ppchar): integer; cdecl; external;
@@ -39,14 +33,15 @@ var
 	L: lua_State;
 
 begin
+	chdir(lb_prgpath);
 	{$IFDEF UNIX}
-	if getenv('LD_LIBRARY_PATH') <> lb_prgpath then
+	if getenv('LD_LIBRARY_PATH') <> '.' then
 	begin
-		setenv('LD_LIBRARY_PATH', pchar(lb_prgpath), true);
+		setenv('LD_LIBRARY_PATH', '.', true);
 		execv(argv[0], argv);
 	end;
 	{$ENDIF}
-	lb_loadlua(lb_prgpath + lb_liblua);
+	lb_loadlua;
 	L := luaL_newstate;
 	luaL_openlibs(L);
 	lua_newtable(L);
@@ -56,7 +51,7 @@ begin
 		lua_rawseti(L, -2, i);
 	end;
 	lua_setglobal(L, 'arg');
-	if luaL_loadfile(L, pchar(lb_prgpath + lb_prgname + '.lua')) = 0 then
+	if luaL_loadfile(L, pchar(lb_prgname + '.lua')) = 0 then
 	begin
 		for i := 1 to paramcount do
 			lua_pushstring(L, pchar(paramstr(i)));
