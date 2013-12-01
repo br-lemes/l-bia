@@ -2,7 +2,7 @@
 
 # L-Bia name and version
 LB_NAME=l-bia
-LB_VERSION=0.3.3
+LB_VERSION=0.3.4
 LB_VERNAME=$(LB_NAME)-$(LB_VERSION)
 
 .PHONY: all docs htdocs clean erase purge distclean pkg-all pkg-src \
